@@ -13,10 +13,10 @@ ENV LANG=C.UTF-8
 
 # 更新映像檔的指令
 RUN apt-get update && \
-      apt-get -y install sudo git build-essential python3 python3-pip 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+      apt-get -y install git python3 python3-pip 
 RUN git clone https://github.com/UDICatNCHU/JiebaWebApi.git
 WORKDIR JiebaWebApi
+RUN pip3 install -r requirements.txt
 
 # the port on which we will be running app server (django runserver / gunicorn)
 EXPOSE 8000
